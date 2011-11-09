@@ -66,7 +66,6 @@ endfunc
 
 """ Apperance
 set number
-set lines=64
 
 " Zenkaku space
 highlight ZenkakuSpace cterm=underline ctermfg=lightblue guibg=darkgray
