@@ -12,9 +12,19 @@ filetype off
 set rtp+=~/.vim/vundle/
 call vundle#rc()
 
+" Plugin
+Bundle 'mattn/zencoding-vim.git'
 Bundle 'Shougo/unite.vim'
+Bundle 'sudo.vim'
 Bundle 'thinca/vim-quickrun'
 Bundle 'thinca/vim-ref'
+
+" Syntax
+Bundle 'actionscript.vim'
+Bundle 'hallison/vim-markdown'
+
+" Color scheme
+Bundle 'imsizon/wombat.vim'
 
 filetype plugin on
 filetype indent on
@@ -99,5 +109,33 @@ autocmd BufWritePre * :%s/\s\+$//ge
 " Tab -> space
 autocmd BufWritePre * :%s/\t/  /ge
 
+
+
+""" unite.vim
+let g:unite_enable_start_insert=1
+
+nnoremap <silent> ,ub :<C-u>Unite buffer<CR>
+nnoremap <silent> ,uf :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
+nnoremap <silent> ,ur :<C-u>Unite -buffer-name=register register<CR>
+nnoremap <silent> ,um :<C-u>Unite file_mru<CR>
+nnoremap <silent> ,uu :<C-u>Unite buffer file_mru<CR>
+nnoremap <silent> ,ua :<C-u>UniteWithBufferDir -buffer-name=files buffer file_mru bookmark file<CR>
+
+au FileType unite nnoremap <silent> <buffer> <expr> <C-j> unite#do_action('split')
+au FileType unite inoremap <silent> <buffer> <expr> <C-j> unite#do_action('split')
+au FileType unite nnoremap <silent> <buffer> <expr> <C-l> unite#do_action('vsplit')
+au FileType unite inoremap <silent> <buffer> <expr> <C-l> unite#do_action('vsplit')
+au FileType unite nnoremap <silent> <buffer> <ESC><ESC> q
+au FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC>q
+
+
+
+""" vim-quickrun
+let g:quickrun_config = {}
+let g:quickrun_config['markdown'] = {
+      \ 'type': 'markdown/pandoc',
+      \ 'cmdopt': '-s',
+      \ 'outputter': 'browser'
+      \ }
 
 

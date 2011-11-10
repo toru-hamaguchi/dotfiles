@@ -7,7 +7,7 @@ if has('gui_macvim')
   set antialias
   set guifont=Ricty:h14
   set lines=64
-  colorscheme desert
+  colorscheme wombat
 endif
 
 
