@@ -1,7 +1,9 @@
 
 """ Basics
-set nobackup
-set noswapfile
+set backup
+set swapfile
+set backupdir=~/.vim/backup
+set directory=~/.vim/swap
 
 
 
@@ -13,11 +15,27 @@ set rtp+=~/.vim/vundle/
 call vundle#rc()
 
 " Plugin
-Bundle 'mattn/zencoding-vim.git'
-Bundle 'Shougo/unite.vim'
+Bundle 'savevers.vim'
 Bundle 'sudo.vim'
+Bundle 'chrismetcalf/vim-yankring'
+Bundle 'docunext/closetag.vim'
+Bundle 'gregsexton/MatchTag'
+Bundle 'kchmck/vim-coffee-script'
+Bundle 'majutsushi/tagbar'
+Bundle 'mattn/zencoding-vim.git'
+Bundle 'nathanaelkane/vim-indent-guides'
+Bundle 'othree/eregex.vim'
+Bundle 'pangloss/vim-javascript'
+" TODO: mbyte-IME
+"Bundle 'Raimondi/delimitMate'
+Bundle 'scrooloose/nerdcommenter'
+Bundle 'scrooloose/syntastic'
+Bundle 'Shougo/neocomplcache'
+Bundle 'Shougo/unite.vim'
 Bundle 'thinca/vim-quickrun'
 Bundle 'thinca/vim-ref'
+Bundle 'tpope/vim-repeat'
+Bundle 'tpope/vim-surround'
 
 " Syntax
 Bundle 'actionscript.vim'
@@ -97,7 +115,7 @@ set tabstop=2 shiftwidth=2 softtabstop=0
 
 
 """ Search
-nmap <ESC><ESC> ;nohlsearch<CR><ESC>
+nmap <Esc><Esc> :nohlsearch<CR><Esc>
 
 
 
@@ -108,6 +126,35 @@ set expandtab
 autocmd BufWritePre * :%s/\s\+$//ge
 " Tab -> space
 autocmd BufWritePre * :%s/\t/  /ge
+
+
+
+""" eregex.vim
+nnoremap / :M/
+nnoremap ? :M?
+nnoremap ,/ /
+nnoremap ,? ?
+
+
+
+""" neocomplcache
+let g:neocomplcache_enable_at_startup=1
+
+
+
+""" savevers.vim
+set patchmode=.clean
+let savevers_types='*'
+let savevers_dirs=&backupdir
+let versdiff_no_resize=1
+nmap <silent> <F5> :VersDiff -<CR>
+nmap <silent> <F6> :VersDiff +<CR>
+nmap <silent> <Leader>vq :VersDiff -c<CR>
+
+
+
+""" tagbar
+nnoremap <silent> <leader>l :TagbarToggle<CR>
 
 
 
@@ -130,12 +177,29 @@ au FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC>q
 
 
 
+""" vim-indent-guides
+"let g:indent_guides_enable_on_vim_startup=1
+let g:indent_guides_guide_size=1
+
+
+
+""" vim-surround
+" TODO: Temporary.
+autocmd VimEnter * xunmap s
+
+
+
 """ vim-quickrun
-let g:quickrun_config = {}
-let g:quickrun_config['markdown'] = {
+let g:quickrun_config={}
+let g:quickrun_config['markdown']={
       \ 'type': 'markdown/pandoc',
       \ 'cmdopt': '-s',
       \ 'outputter': 'browser'
       \ }
+
+
+""" vim-yankring
+let g:yankring_history_dir='~/.vim'
+
 
 
