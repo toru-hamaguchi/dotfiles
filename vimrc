@@ -9,43 +9,48 @@ set directory=~/.vim/swap
 
 """ vundle
 set nocompatible
-filetype off
+filetype plugin indent off
 
-set rtp+=~/.vim/vundle/
-call vundle#rc()
+if has('vim_starting')
+  set runtimepath+=~/.vim/neobundle.vim/
+  call neobundle#rc(expand('~/.vim/bundle/'))
+endif
 
 " Plugin
-Bundle 'savevers.vim'
-Bundle 'sudo.vim'
-Bundle 'chrismetcalf/vim-yankring'
-Bundle 'docunext/closetag.vim'
-Bundle 'gregsexton/MatchTag'
-Bundle 'kchmck/vim-coffee-script'
-Bundle 'majutsushi/tagbar'
-Bundle 'mattn/zencoding-vim.git'
-Bundle 'nathanaelkane/vim-indent-guides'
-Bundle 'othree/eregex.vim'
-Bundle 'pangloss/vim-javascript'
+NeoBundle 'chrismetcalf/vim-yankring'
+NeoBundle 'docunext/closetag.vim'
+NeoBundle 'gregsexton/MatchTag'
+NeoBundle 'kchmck/vim-coffee-script'
+NeoBundle 'majutsushi/tagbar'
+NeoBundle 'mattn/zencoding-vim.git'
+NeoBundle 'nathanaelkane/vim-indent-guides'
+NeoBundle 'othree/eregex.vim'
+NeoBundle 'pangloss/vim-javascript'
 " TODO: mbyte-IME
-"Bundle 'Raimondi/delimitMate'
-Bundle 'scrooloose/nerdcommenter'
-Bundle 'scrooloose/syntastic'
-Bundle 'Shougo/neocomplcache'
-Bundle 'Shougo/unite.vim'
-Bundle 'thinca/vim-quickrun'
-Bundle 'thinca/vim-ref'
-Bundle 'tpope/vim-repeat'
-Bundle 'tpope/vim-surround'
+"NeoBundle 'Raimondi/delimitMate'
+NeoBundle 'scrooloose/nerdcommenter'
+NeoBundle 'scrooloose/syntastic'
+NeoBundle 'Shougo/neocomplcache'
+NeoBundle 'Shougo/unite.vim'
+NeoBundle 'Shougo/vimfiler'
+NeoBundle 'Shougo/vimproc'
+NeoBundle 'Shougo/vimshell'
+NeoBundle 'thinca/vim-quickrun'
+NeoBundle 'thinca/vim-ref'
+NeoBundle 'tpope/vim-repeat'
+NeoBundle 'tpope/vim-surround'
+NeoBundle 'tyru/open-browser.vim'
+NeoBundle 'vim-scripts/savevers.vim'
+NeoBundle 'vim-scripts/sudo.vim'
 
 " Syntax
-Bundle 'actionscript.vim'
-Bundle 'hallison/vim-markdown'
+NeoBundle 'hallison/vim-markdown'
+NeoBundle 'vim-scripts/actionscript.vim--Leider'
 
 " Color scheme
-Bundle 'imsizon/wombat.vim'
+NeoBundle 'imsizon/wombat.vim'
 
-filetype plugin on
-filetype indent on
+filetype plugin indent on
 
 
 
@@ -200,6 +205,22 @@ let g:quickrun_config['markdown']={
 
 """ vim-yankring
 let g:yankring_history_dir='~/.vim'
+
+
+
+""" vimfiler
+let g:vimfiler_as_default_explorer=1
+
+
+
+""" vimshell
+nnoremap <silent> ,is :VimShell<CR>
+nnoremap <silent> ,ipy :VimShellInteractive python<CR>
+nnoremap <silent> ,irb :VimShellInteractive irb<CR>
+" eval current line.
+vmap <silent> ,ss :VimShellSendString<CR>
+" eval selection.
+nnoremap <silent> ,ss <S-v>:VimShellSendString<CR>
 
 
 
