@@ -21,7 +21,10 @@ NeoBundle 'chrismetcalf/vim-yankring'
 NeoBundle 'docunext/closetag.vim'
 NeoBundle 'gregsexton/MatchTag'
 NeoBundle 'kchmck/vim-coffee-script'
+NeoBundle 'Lokaltog/vim-easymotion'
 NeoBundle 'majutsushi/tagbar'
+NeoBundle 'mattn/unite-advent_calendar'
+NeoBundle 'mattn/webapi-vim'
 NeoBundle 'mattn/zencoding-vim.git'
 NeoBundle 'nathanaelkane/vim-indent-guides'
 NeoBundle 'othree/eregex.vim'
@@ -179,6 +182,11 @@ au FileType unite nnoremap <silent> <buffer> <expr> <C-l> unite#do_action('vspli
 au FileType unite inoremap <silent> <buffer> <expr> <C-l> unite#do_action('vsplit')
 au FileType unite nnoremap <silent> <buffer> <ESC><ESC> q
 au FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC>q
+
+
+
+""" vim-easymotion
+let g:EasyMotion_leader_key='<Leader>'
 
 
 
