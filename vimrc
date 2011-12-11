@@ -137,6 +137,11 @@ autocmd BufWritePre * :%s/\t/  /ge
 
 
 
+""" Key
+imap <C-@> <C-[>
+
+
+
 """ eregex.vim
 nnoremap / :M/
 nnoremap ? :M?
