@@ -22,6 +22,7 @@ NeoBundle 'docunext/closetag.vim'
 NeoBundle 'gregsexton/MatchTag'
 NeoBundle 'kchmck/vim-coffee-script'
 NeoBundle 'Lokaltog/vim-easymotion'
+NeoBundle 'Lokaltog/vim-powerline'
 NeoBundle 'majutsushi/tagbar'
 NeoBundle 'mattn/unite-advent_calendar'
 NeoBundle 'mattn/webapi-vim'
@@ -29,8 +30,7 @@ NeoBundle 'mattn/zencoding-vim.git'
 NeoBundle 'nathanaelkane/vim-indent-guides'
 NeoBundle 'othree/eregex.vim'
 NeoBundle 'pangloss/vim-javascript'
-" TODO: mbyte-IME
-"NeoBundle 'Raimondi/delimitMate'
+NeoBundle 'Raimondi/delimitMate'
 NeoBundle 'scrooloose/nerdcommenter'
 NeoBundle 'scrooloose/syntastic'
 NeoBundle 'Shougo/neocomplcache'
@@ -155,6 +155,13 @@ let g:neocomplcache_enable_at_startup=1
 
 
 
+""" open-browser.vim
+let g:netrw_nogx=1  " disable netrw's gx mapping.
+nmap gx <Plug>(openbrowser-smart-search)
+vmap gx <Plug>(openbrowser-smart-search)
+
+
+
 """ savevers.vim
 set patchmode=.clean
 let savevers_types='*'
@@ -234,6 +241,7 @@ nnoremap <silent> ,irb :VimShellInteractive irb<CR>
 vmap <silent> ,ss :VimShellSendString<CR>
 " eval selection.
 nnoremap <silent> ,ss <S-v>:VimShellSendString<CR>
+
 
 
 
