@@ -21,6 +21,7 @@ NeoBundle 'chrismetcalf/vim-yankring'
 NeoBundle 'docunext/closetag.vim'
 NeoBundle 'gregsexton/MatchTag'
 NeoBundle 'kchmck/vim-coffee-script'
+NeoBundle 'kmnk/vim-unite-giti'
 NeoBundle 'Lokaltog/vim-easymotion'
 NeoBundle 'Lokaltog/vim-powerline'
 NeoBundle 'majutsushi/tagbar'
@@ -139,6 +140,7 @@ autocmd BufWritePre * :%s/\t/  /ge
 
 """ Key
 imap <C-@> <C-[>
+imap jj <Esc>
 
 
 
