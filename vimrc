@@ -59,7 +59,6 @@ filetype plugin indent on
 
 
 """ Apperance
-set number
 
 " Zenkaku space
 highlight ZenkakuSpace cterm=underline ctermfg=lightblue guibg=darkgray
@@ -72,6 +71,18 @@ augroup cch
   autocmd WinLeave * set nocursorline
   autocmd WinEnter,BufRead * set cursorline
 augroup END
+
+" Line number
+function! NumberToggle()
+  if (&relativenumber==1)
+    set number
+  else
+    set relativenumber
+  endif
+endfunc
+noremap <C-n> :call NumberToggle()<cr>
+autocmd InsertEnter * :set number
+autocmd InsertLeave * :set relativenumber
 
 
 
