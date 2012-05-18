@@ -69,16 +69,7 @@ augroup cch
 augroup END
 
 " Line number
-function! NumberToggle()
-  if (&relativenumber==1)
-    set number
-  else
-    set relativenumber
-  endif
-endfunc
-noremap <C-n> :call NumberToggle()<cr>
-autocmd InsertEnter * :set number
-autocmd InsertLeave * :set relativenumber
+set number
 
 
 
