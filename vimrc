@@ -22,16 +22,12 @@ NeoBundle 'docunext/closetag.vim'
 NeoBundle 'gregsexton/MatchTag'
 NeoBundle 'kchmck/vim-coffee-script'
 NeoBundle 'kmnk/vim-unite-giti'
-NeoBundle 'Lokaltog/vim-easymotion'
 NeoBundle 'Lokaltog/vim-powerline'
 NeoBundle 'majutsushi/tagbar'
-NeoBundle 'mattn/unite-advent_calendar'
 NeoBundle 'mattn/webapi-vim'
 NeoBundle 'mattn/zencoding-vim.git'
-NeoBundle 'nathanaelkane/vim-indent-guides'
 NeoBundle 'othree/eregex.vim'
 NeoBundle 'pangloss/vim-javascript'
-NeoBundle 'Raimondi/delimitMate'
 NeoBundle 'scrooloose/nerdcommenter'
 NeoBundle 'scrooloose/syntastic'
 NeoBundle 'Shougo/neocomplcache'
@@ -164,17 +160,6 @@ au FileType unite nnoremap <silent> <buffer> <expr> <C-l> unite#do_action('vspli
 au FileType unite inoremap <silent> <buffer> <expr> <C-l> unite#do_action('vsplit')
 au FileType unite nnoremap <silent> <buffer> <ESC><ESC> q
 au FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC>q
-
-
-
-""" vim-easymotion
-let g:EasyMotion_leader_key='<Leader>'
-
-
-
-""" vim-indent-guides
-"let g:indent_guides_enable_on_vim_startup=1
-let g:indent_guides_guide_size=1
 
 
 
