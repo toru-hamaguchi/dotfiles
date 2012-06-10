@@ -4,17 +4,14 @@ if $SHELL =~ '/fish$'
   set shell=sh
 endif
 
-
-
-""" Basics
+" Basics. "{{{
 set backup
 set swapfile
 set backupdir=~/.vim/backup
 set directory=~/.vim/swap
+"}}}
 
-
-
-""" vundle
+" vundle."{{{
 set nocompatible
 filetype plugin indent off
 
@@ -23,7 +20,7 @@ if has('vim_starting')
   call neobundle#rc(expand('~/.vim/bundle/'))
 endif
 
-" Plugin
+" Plugin.
 NeoBundle 'docunext/closetag.vim'
 NeoBundle 'kchmck/vim-coffee-script'
 NeoBundle 'Lokaltog/vim-powerline'
@@ -49,25 +46,24 @@ NeoBundle 'vim-scripts/savevers.vim'
 NeoBundle 'vim-scripts/sudo.vim'
 NeoBundle 'vim-scripts/YankRing.vim'
 
-" Syntax
+" Syntax.
 NeoBundle 'jelera/vim-javascript-syntax'
 NeoBundle 'hallison/vim-markdown'
 NeoBundle 'vim-scripts/actionscript.vim--Leider'
 
-" Color scheme
+" Color scheme.
 NeoBundle 'imsizon/wombat.vim'
 
 filetype plugin indent on
+"}}}
 
+" Apperance."{{{
 
-
-""" Apperance
-
-" Zenkaku space
+" Zenkaku space.
 highlight ZenkakuSpace cterm=underline ctermfg=lightblue guibg=darkgray
 match ZenkakuSpace /　/
 
-" Highlight cursor line
+" Highlight cursor line.
 set cursorline
 augroup cch
   autocmd! cch
@@ -75,58 +71,44 @@ augroup cch
   autocmd WinEnter,BufRead * set cursorline
 augroup END
 
-" Line number
+" Line number.
 set number
 
-
-
-""" Indent
+" Indent.
 set tabstop=2 shiftwidth=2 softtabstop=0
+"}}}
 
-
-
-""" Search
-nmap <Esc><Esc> :nohlsearch<CR><Esc>
-
-
-
-""" Edit
+" Edit."{{{
 set expandtab
 
-" Strip tailing space
+" Strip tailing space.
 autocmd BufWritePre * :%s/\s\+$//ge
-" Tab -> space
+" Tab -> space on write.
 autocmd BufWritePre * :%s/\t/  /ge
+"}}}
 
-
-
-""" Key
+" Key mapping."{{{
 imap <C-@> <C-[>
 imap jj <Esc>
+nmap <Esc><Esc> :nohlsearch<CR><Esc>
+"}}}
 
-
-
-""" eregex.vim
+" Plugin settings."{{{
+" eregex.vim
 nnoremap / :M/
 nnoremap ? :M?
 nnoremap ,/ /
 nnoremap ,? ?
 
-
-
-""" neocomplcache
+" neocomplcache
 let g:neocomplcache_enable_at_startup=1
 
-
-
-""" open-browser.vim
+" open-browser.vim
 let g:netrw_nogx=1  " disable netrw's gx mapping.
 nmap gx <Plug>(openbrowser-smart-search)
 vmap gx <Plug>(openbrowser-smart-search)
 
-
-
-""" savevers.vim
+" savevers.vim
 set patchmode=.clean
 let savevers_types='*'
 let savevers_dirs=&backupdir
@@ -135,23 +117,17 @@ nmap <silent> <F5> :VersDiff -<CR>
 nmap <silent> <F6> :VersDiff +<CR>
 nmap <silent> <Leader>vq :VersDiff -c<CR>
 
-
-
-""" tagbar
+" tagbar
 nnoremap <silent> <leader>l :TagbarToggle<CR>
 
-
-
-""" unite.vim
+" unite.vim
 let g:unite_enable_start_insert=1
-
 nnoremap <silent> ,ub :<C-u>Unite buffer<CR>
 nnoremap <silent> ,uf :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
 nnoremap <silent> ,ur :<C-u>Unite -buffer-name=register register<CR>
 nnoremap <silent> ,um :<C-u>Unite file_mru<CR>
 nnoremap <silent> ,uu :<C-u>Unite buffer file_mru<CR>
 nnoremap <silent> ,ua :<C-u>UniteWithBufferDir -buffer-name=files buffer file_mru bookmark file<CR>
-
 au FileType unite nnoremap <silent> <buffer> <expr> <C-j> unite#do_action('split')
 au FileType unite inoremap <silent> <buffer> <expr> <C-j> unite#do_action('split')
 au FileType unite nnoremap <silent> <buffer> <expr> <C-l> unite#do_action('vsplit')
@@ -159,15 +135,11 @@ au FileType unite inoremap <silent> <buffer> <expr> <C-l> unite#do_action('vspli
 au FileType unite nnoremap <silent> <buffer> <ESC><ESC> q
 au FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC>q
 
-
-
-""" vim-powerline
+" vim-powerline
 set laststatus=2  " Always show the statusline
 set t_Co=256  " Explicitly tell vim that the terminal supports 256 colors
 
-
-
-""" vim-quickrun
+" vim-quickrun
 let g:quickrun_config={}
 let g:quickrun_config['markdown']={
       \ 'type': 'markdown/pandoc',
@@ -175,19 +147,13 @@ let g:quickrun_config['markdown']={
       \ 'outputter': 'browser'
       \ }
 
-
-
-""" vim-yankring
+" vim-yankring
 let g:yankring_history_dir='~/.vim'
 
-
-
-""" vimfiler
+" vimfiler
 let g:vimfiler_as_default_explorer=1
 
-
-
-""" vimshell
+" vimshell
 nnoremap <silent> ,is :VimShell<CR>
 nnoremap <silent> ,ipy :VimShellInteractive python<CR>
 nnoremap <silent> ,irb :VimShellInteractive irb<CR>
@@ -195,6 +161,6 @@ nnoremap <silent> ,irb :VimShellInteractive irb<CR>
 vmap <silent> ,ss :VimShellSendString<CR>
 " eval selection.
 nnoremap <silent> ,ss <S-v>:VimShellSendString<CR>
+"}}}
 
-
-
+" vim:set foldmethod=marker :
