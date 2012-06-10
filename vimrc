@@ -1,4 +1,11 @@
 
+" VIM expects to be run from a POSIX shell.
+if $SHELL =~ '/fish$'
+  set shell=sh
+endif
+
+
+
 """ Basics
 set backup
 set swapfile
@@ -17,11 +24,8 @@ if has('vim_starting')
 endif
 
 " Plugin
-NeoBundle 'chrismetcalf/vim-yankring'
 NeoBundle 'docunext/closetag.vim'
-NeoBundle 'gregsexton/MatchTag'
 NeoBundle 'kchmck/vim-coffee-script'
-NeoBundle 'kmnk/vim-unite-giti'
 NeoBundle 'Lokaltog/vim-powerline'
 NeoBundle 'majutsushi/tagbar'
 NeoBundle 'mattn/webapi-vim'
@@ -37,13 +41,16 @@ NeoBundle 'Shougo/vimproc'
 NeoBundle 'Shougo/vimshell'
 NeoBundle 'thinca/vim-quickrun'
 NeoBundle 'thinca/vim-ref'
+NeoBundle 'Shougo/vinarise'
 NeoBundle 'tpope/vim-repeat'
 NeoBundle 'tpope/vim-surround'
 NeoBundle 'tyru/open-browser.vim'
 NeoBundle 'vim-scripts/savevers.vim'
 NeoBundle 'vim-scripts/sudo.vim'
+NeoBundle 'vim-scripts/YankRing.vim'
 
 " Syntax
+NeoBundle 'jelera/vim-javascript-syntax'
 NeoBundle 'hallison/vim-markdown'
 NeoBundle 'vim-scripts/actionscript.vim--Leider'
 
@@ -170,12 +177,6 @@ let g:quickrun_config['markdown']={
 
 
 
-""" vim-surround
-" TODO: Temporary.
-autocmd VimEnter * xunmap s
-
-
-
 """ vim-yankring
 let g:yankring_history_dir='~/.vim'
 
@@ -194,7 +195,6 @@ nnoremap <silent> ,irb :VimShellInteractive irb<CR>
 vmap <silent> ,ss :VimShellSendString<CR>
 " eval selection.
 nnoremap <silent> ,ss <S-v>:VimShellSendString<CR>
-
 
 
 
