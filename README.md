@@ -7,8 +7,7 @@ My dotfiles.
 
 Install
 -------
-    $ git clone https://github.com/toru-hamaguchi/dotfiles ~/dotfiles
-    $ cd ~/dotfiles
+    $ git clone https://github.com/toru-hamaguchi/dotfiles ~/dotfiles --recursive
 
 Setup
 -----
@@ -24,10 +23,6 @@ Setup
 ### Create directories.
     $ mkdir ~/.vim/backup
     $ mkdir ~/.vim/swap
-
-### Init modules.
-    $ git submodule init
-    $ git submodule update
 
 ### make vimproc lib.
     $ cd ~/.vim/bundle/vimproc
