@@ -54,6 +54,7 @@ NeoBundle 'vim-scripts/actionscript.vim--Leider'
 " Color scheme.
 NeoBundle 'imsizon/wombat.vim'
 
+syntax on
 filetype plugin indent on
 "}}}
 
