@@ -24,5 +24,5 @@ $ ln -s ~/dotfiles/bash_profile ~/.bash_profile
 $ ln -s ~/dotfiles/tmux.conf ~/.tmux.conf
 $ ln -s ~/dotfiles/vimrc ~/.vimrc
 $ ln -s ~/dotfiles/neobundle.vim ~/.vim/neobundle.vim
-$ ln -s ~/dotfiles/config/fish/whoami.fish ~/.config/fish/$(whoami).fish
+$ ln -s ~/dotfiles/config/fish/config.fish ~/.config/fish/config.fish
 ```
