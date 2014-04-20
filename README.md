@@ -1,27 +1,28 @@
-dotfiles
-========
+# dotfiles
 
-About
------
+## About
 My dotfiles.
 
-Install
--------
-    $ git clone https://github.com/toru-hamaguchi/dotfiles ~/dotfiles --recursive
+## Installation
+```bash
+$ git clone https://github.com/toru-hamaguchi/dotfiles ~/dotfiles --recursive
+```
 
-Setup
------
-### Link files.
-    $ ln -s ~/dotfiles/bashrc ~/.bashrc
-    $ ln -s ~/dotfiles/bash_profile ~/.bash_profile
-    $ ln -s ~/dotfiles/tmux.conf ~/.tmux.conf
-    $ ln -s ~/dotfiles/vimrc ~/.vimrc
-    $ ln -s ~/dotfiles/neobundle.vim ~/.vim/neobundle.vim
+Create directories.
 
-### Create directories.
-    $ mkdir ~/.vim/backup
-    $ mkdir ~/.vim/swap
+```bash
+$ mkdir -p ~/.config/fish
+$ mkdir -p ~/.vim/backup
+$ mkdir -p ~/.vim/swap
+```
 
-### make vimproc lib.
-    $ cd ~/.vim/bundle/vimproc
-    $ make -f make_xxx.mak
+Link files.
+
+```bash
+$ ln -s ~/dotfiles/bashrc ~/.bashrc
+$ ln -s ~/dotfiles/bash_profile ~/.bash_profile
+$ ln -s ~/dotfiles/tmux.conf ~/.tmux.conf
+$ ln -s ~/dotfiles/vimrc ~/.vimrc
+$ ln -s ~/dotfiles/neobundle.vim ~/.vim/neobundle.vim
+$ ln -s ~/dotfiles/config/fish/whoami.fish ~/.config/fish/$(whoami).fish
+```
