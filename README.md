@@ -1,6 +1,5 @@
 # dotfiles
 
-## About
 My dotfiles.
 
 ## Installation
