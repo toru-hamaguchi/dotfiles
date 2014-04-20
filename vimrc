@@ -12,54 +12,59 @@ set directory=~/.vim/swap
 "}}}
 
 " vundle."{{{
-set nocompatible
+if has('vim_starting')
+  set nocompatible
+  set runtimepath+=~/.vim/neobundle.vim/
+endif
+
 filetype plugin indent off
 
-if has('vim_starting')
-  set runtimepath+=~/.vim/neobundle.vim/
-  call neobundle#rc(expand('~/.vim/bundle/'))
-endif
+call neobundle#begin(expand('~/.vim/bundle/'))
 
 " Plugin.
 NeoBundle 'docunext/closetag.vim'
-NeoBundle 'kchmck/vim-coffee-script'
-NeoBundle 'Lokaltog/vim-powerline'
-NeoBundle 'majutsushi/tagbar'
-NeoBundle 'mattn/webapi-vim'
-NeoBundle 'mattn/zencoding-vim.git'
-NeoBundle 'othree/eregex.vim'
-NeoBundle 'pangloss/vim-javascript'
-NeoBundle 'scrooloose/nerdcommenter'
-NeoBundle 'scrooloose/syntastic'
+NeoBundle 'kien/ctrlp.vim'
+NeoBundle 'mattn/emmet-vim'
+NeoBundle 'othree/html5.vim'
+NeoBundle 'mattn/jscomplete-vim'
+NeoBundle 'itchyny/lightline.vim'
+NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'Shougo/neocomplcache'
+NeoBundle 'scrooloose/syntastic'
 NeoBundle 'Shougo/unite.vim'
-NeoBundle 'Shougo/vimfiler'
-NeoBundle 'Shougo/vimproc'
-NeoBundle 'Shougo/vimshell'
-NeoBundle 'Shougo/vinarise'
-NeoBundle 'spolu/dwm.vim'
-NeoBundle 'thinca/vim-quickrun'
-NeoBundle 'thinca/vim-ref'
-NeoBundle 'tpope/vim-repeat'
+NeoBundle 'hail2u/vim-css3-syntax'
+NeoBundle 'airblade/vim-gitgutter'
+NeoBundle 'groenewege/vim-less'
+NeoBundle 'Shougo/vimproc.vim', {
+  \ 'build': {
+  \   'windows': 'make -f make_mingw32.mak',
+  \   'cygwin': 'make -f make_cygwin.mak',
+  \   'mac': 'make -f make_mac.mak',
+  \   'unix': 'make -f make_unix.mak',
+  \   }
+  \ }
 NeoBundle 'tpope/vim-surround'
-NeoBundle 'tyru/open-browser.vim'
-NeoBundle 'vim-scripts/savevers.vim'
-NeoBundle 'vim-scripts/sudo.vim'
-NeoBundle 'vim-scripts/YankRing.vim'
+NeoBundle 'LeafCage/yankround.vim'
 
 " Syntax.
 NeoBundle 'jelera/vim-javascript-syntax'
 NeoBundle 'hallison/vim-markdown'
-NeoBundle 'vim-scripts/actionscript.vim--Leider'
 
 " Color scheme.
-NeoBundle 'imsizon/wombat.vim'
+NeoBundle 'gh:svjunic/RadicalGoodSpeed.vim.git'
+NeoBundle 'vim-scripts/Wombat'
 
-syntax on
 filetype plugin indent on
+syntax enable
+
+call neobundle#end()
+
+NeoBundleCheck
 "}}}
 
 " Apperance."{{{
+colorscheme radicalgoodspeed
+"colorscheme wombat
 
 " Zenkaku space.
 highlight ZenkakuSpace cterm=underline ctermfg=lightblue guibg=darkgray
@@ -96,73 +101,32 @@ nmap <Esc><Esc> :nohlsearch<CR><Esc>
 "}}}
 
 " Plugin settings."{{{
-" eregex.vim
-nnoremap / :M/
-nnoremap ? :M?
-nnoremap ,/ /
-nnoremap ,? ?
+" emmet
+let g:user_emmet_expandabbr_key='<c-e>'
+let g:user_emmet_settings={
+  \ 'indentation': '  ',
+  \ 'lang': 'ja',
+  \}
+
+" jscomplete-vim
+autocmd FileType javascript
+  \ :setl omnifunc=jscomplete#CompleteJS
+let g:jscomplete_use=['dom','es6th']
+
+" lightline.vim
+set laststatus=2  " Always show the statusline
+let g:lightline={
+  \ 'component': {
+  \   'readonly': '%{&readonly?"⭤":""}',
+  \   }
+  \ }
 
 " neocomplcache
 let g:neocomplcache_enable_at_startup=1
-
-" open-browser.vim
-let g:netrw_nogx=1  " disable netrw's gx mapping.
-nmap gx <Plug>(openbrowser-smart-search)
-vmap gx <Plug>(openbrowser-smart-search)
-
-" savevers.vim
-set patchmode=.clean
-let savevers_types='*'
-let savevers_dirs=&backupdir
-let versdiff_no_resize=1
-nmap <silent> <F5> :VersDiff -<CR>
-nmap <silent> <F6> :VersDiff +<CR>
-nmap <silent> <Leader>vq :VersDiff -c<CR>
-
-" tagbar
-nnoremap <silent> <leader>l :TagbarToggle<CR>
+let g:neocomplcache_enable_smart_case=1
 
 " unite.vim
 let g:unite_enable_start_insert=1
-nnoremap <silent> ,ub :<C-u>Unite buffer<CR>
-nnoremap <silent> ,uf :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
-nnoremap <silent> ,ur :<C-u>Unite -buffer-name=register register<CR>
-nnoremap <silent> ,um :<C-u>Unite file_mru<CR>
-nnoremap <silent> ,uu :<C-u>Unite buffer file_mru<CR>
-nnoremap <silent> ,ua :<C-u>UniteWithBufferDir -buffer-name=files buffer file_mru bookmark file<CR>
-au FileType unite nnoremap <silent> <buffer> <expr> <C-j> unite#do_action('split')
-au FileType unite inoremap <silent> <buffer> <expr> <C-j> unite#do_action('split')
-au FileType unite nnoremap <silent> <buffer> <expr> <C-l> unite#do_action('vsplit')
-au FileType unite inoremap <silent> <buffer> <expr> <C-l> unite#do_action('vsplit')
-au FileType unite nnoremap <silent> <buffer> <ESC><ESC> q
-au FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC>q
-
-" vim-powerline
-set laststatus=2  " Always show the statusline
-set t_Co=256  " Explicitly tell vim that the terminal supports 256 colors
-
-" vim-quickrun
-let g:quickrun_config={}
-let g:quickrun_config['markdown']={
-      \ 'type': 'markdown/pandoc',
-      \ 'cmdopt': '-s',
-      \ 'outputter': 'browser'
-      \ }
-
-" vim-yankring
-let g:yankring_history_dir='~/.vim'
-
-" vimfiler
-let g:vimfiler_as_default_explorer=1
-
-" vimshell
-nnoremap <silent> ,is :VimShell<CR>
-nnoremap <silent> ,ipy :VimShellInteractive python<CR>
-nnoremap <silent> ,irb :VimShellInteractive irb<CR>
-" eval current line.
-vmap <silent> ,ss :VimShellSendString<CR>
-" eval selection.
-nnoremap <silent> ,ss <S-v>:VimShellSendString<CR>
+nnoremap <silent> ,ub :<c-u>Unite buffer<CR>
+nnoremap <silent> ,uf :<c-u>UniteWithBufferDir -buffer-name=files file<CR>
 "}}}
-
-" vim:set foldmethod=marker :
